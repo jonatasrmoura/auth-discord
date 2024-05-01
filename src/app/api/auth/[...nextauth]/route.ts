@@ -3,9 +3,6 @@ import NextAuth from "next-auth/next";
 import DiscordProvider from "next-auth/providers/discord";
 
 import { createAccessTokenCookie } from "@/cookies/access-token/create-access-token.cookie";
-// import { createMemberGuildDataCookie } from "@/cookies/member/create-member-guild-data.cookie";
-// import { getGuildMemberByUserId } from "@/lib/get-guild-member-by-user-id.discord";
-// import { getGuildIdByUrl } from "@/utils/get-guild-id-by-url";
 
 const scopes = [
   "identify",
@@ -23,21 +20,6 @@ const callbacks: Partial<CallbacksOptions<Profile, Account>> | undefined = {
       return true;
     }
     return false;
-  },
-  async redirect({ url, baseUrl }) {
-    // const search: string = "/admin/member-profile/";
-
-    console.log("redirect url", url);
-    console.log("redirect baseUrl", baseUrl);
-
-    // if (url.includes(search)) {
-    //   const guildId = getGuildIdByUrl(url);
-    //   const member = await getGuildMemberByUserId(guildId);
-    //   if (member) {
-    //     await createMemberGuildDataCookie(member);
-    //   }
-    // }
-    return url;
   },
 };
 
